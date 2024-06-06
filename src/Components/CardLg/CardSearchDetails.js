@@ -5,12 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button, ListGroup } from 'react-bootstrap';
 import { useLocation } from 'react-router';
 
-function CardDetailComp({ url1, model, fuel, trans, year, carImageSearchQuery }) {
+function CardSearchDetailComp({ url1,fuel, trans, year, carImageSearchQuery }) {
 
   const location = useLocation();
-  const { mod, index } = location.state || {};
-  const indexValue =`&index=${index}`;
-  const url=url1+mod+indexValue;
+  const { make, model,index } = location.state || {};
+  const modelValue =`&model=${make}`;
+  const makeValue =`&make=${model}`;
+  const url=url1+make+model;
   console.log(url)
   const [carData, setCarData] = useState(null);
   const [carImage, setCarImage] = useState('');
@@ -212,4 +213,4 @@ console.log(url)
   );
 }
 
-export default CardDetailComp;
+export default CardSearchDetailComp;
