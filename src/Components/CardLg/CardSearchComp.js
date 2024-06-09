@@ -4,7 +4,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button, ListGroup } from 'react-bootstrap';
 
-function CardSearchComp({ url1,make, model, fuel, trans, year, index, carImageSearchQuery,mod }) {
+function CardSearchComp({ url1,make,  fuel, trans, year, index, carImageSearchQuery,mod }) {
   const url=url1+mod+make;
   const [carData, setCarData] = useState(null);
   const [carImage, setCarImage] = useState('');
@@ -46,8 +46,8 @@ console.log(url)
     fetchCarImage();
   }, [url, carImageSearchQuery]);
 
-  const handleViewDetails = () => {
-    navigate('/carsearchdetails', { state: { mod: mod, make: make,index:index } });
+  const handleViewDetails = (mod) => {
+    navigate('/carsearchdetails', { state: { model: mod } });
   };
   return (
     <Card style={{ width: '18rem' }}>

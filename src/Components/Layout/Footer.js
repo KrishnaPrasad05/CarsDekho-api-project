@@ -13,14 +13,19 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <Container fluid style={{backgroundColor:'#c8dfea'}}>
+    <Container fluid style={{backgroundColor:'#c8dfea',paddingTop:'20px'}}>
         <Container>
         <Row>
-        <div className='mt-3 mb-2' style={{display:'flex',alignItems:'center',justifyContent:'space-around'}}>
+        <Col sm={12} md={12} xl={6} xxl={6}>
+        <div style={{width:'40px',height:'40px',display:'flex'}}><h3>CarsDekho</h3> <Image src={logo} style={{marginLeft:'5px',width:'70px',height:'40px'}} rounded /></div>
+        </Col>
+        <Col sm={12} md={12} xl={6} xxl={6}>
+        <p style={{color:'maroon',fontWeight:700,letterSpacing:'1.5px'}}>From Specs to Secrets: Unveiling the Complete Car Experience</p>
+        </Col>
             
-            <div style={{width:'40px',height:'40px',display:'flex'}}><h3>CarsDekho</h3> <Image src={logo} style={{marginLeft:'5px',width:'70px',height:'40px',marginTop:'-10px'}} rounded /></div>
-            <p style={{color:'maroon',fontWeight:700,letterSpacing:'1.5px'}}>From Specs to Secrets: Unveiling the Complete Car Experience</p>
-          </div>
+            
+            
+         
         </Row>
         <Row>
             <Col>

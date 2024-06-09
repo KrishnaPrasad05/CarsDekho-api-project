@@ -1,21 +1,23 @@
-import {Container,Row,Col,Table,Image} from 'react-bootstrap';
+import {Container,Row,Col,Table,Image, Alert} from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button, ListGroup } from 'react-bootstrap';
 import { useLocation } from 'react-router';
 
-function CardSearchDetailComp({ url1,fuel, trans, year, carImageSearchQuery }) {
+function CardSearchDetailComp({fuel,index, trans, year, carImageSearchQuery }) {
 
   const location = useLocation();
-  const { make, model,index } = location.state || {};
-  const modelValue =`&model=${make}`;
-  const makeValue =`&make=${model}`;
-  const url=url1+make+model;
-  console.log(url)
+  const { model, make } = location.state || {};
+
+  const url1 = 'https://api.api-ninjas.com/v1/cars?';
+  const modelValue = `&model=${model}`; 
+  const makeValue = `make=${make}`;
+  const url = `${url1}${makeValue}${modelValue}`;
+  
   const [carData, setCarData] = useState(null);
   const [carImage, setCarImage] = useState('');
-console.log(url)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +26,10 @@ console.log(url)
           headers: { 'x-api-key': 'KcH0p5y3nm2N4tqJFfr1Vj4NLEXuEbGytNTq7rNf' }
         };
         const response = await axios.get(url, options);
-        setCarData(response.data);
+        if (response.data.length > 0) {
+          setCarData(response.data[0]);
+          console.log('Car data:', response.data[0]);
+        }
       } catch (error) {
         console.error('Error fetching car data:', error);
       }
@@ -33,7 +38,7 @@ console.log(url)
     const fetchCarImage = async () => {
       try {
         const response = await axios.get(
-          `https://api.pexels.com/v1/search?query=${carImageSearchQuery}&per_page=1`,
+          `https://api.pexels.com/v1/search?query=${make}&per_page=1`,
           {
             headers: {
               Authorization: 'YpkmDQ8PDR3I3ml8Jlco6yuUejeGP4TGcK5aHij1ry6oFHv4jH6VX5XH',
@@ -42,18 +47,27 @@ console.log(url)
         );
         if (response.data.photos.length > 0) {
           setCarImage(response.data.photos[0].src.medium);
+          console.log('Car image:', response.data.photos[0].src.medium);
         }
       } catch (error) {
         console.error('Error fetching car image:', error);
       }
     };
 
-    fetchData();
-    fetchCarImage();
-  }, [url, carImageSearchQuery]);
+    if (make && model) {
+      fetchData();
+      fetchCarImage();
+    }
+  }, [url, make, model]);
+
+  if (!carData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-   <Card className='mt-5' style={{boxShadow:'10px 10px 30px #9EBBBB'}}>
+      <Container>
+      <Card style={{boxShadow:'5px 5px 10px #9EBBBB',marginTop:'5rem'}}>
         <Card.Header style={{backgroundColor:'#c8dfea',padding:'5px',color:'#253f4b'}}>
             <h2 className='text-center'>All Details</h2>
         </Card.Header>
@@ -67,27 +81,27 @@ console.log(url)
                 <Table >
         <tr>
           <th>Make</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].make}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.make}</td>
         </tr>
         <tr>
           <th>Model</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].model}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.model}</td>
         </tr>
         <tr>
           <th>Year</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].year}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.year}</td>
         </tr>
         <tr>
           <th>Drive</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].drive}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.drive}</td>
         </tr>
         <tr>
           <th>Fuel Type</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].fuel_type}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.fuel_type}</td>
         </tr>
         <tr>
           <th>Transmission Type</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].transmission}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.transmission}</td>
         </tr>
         </Table>
                 </Col>
@@ -95,27 +109,27 @@ console.log(url)
                 <Table >
         <tr>
           <th>City mpg</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].city_mpg}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.city_mpg}</td>
         </tr>
         <tr>
           <th>Combined mpg</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].combination_mpg}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.combination_mpg}</td>
         </tr>
         <tr>
           <th>Cylinders</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].cylinders}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.cylinders}</td>
         </tr>
         <tr>
           <th>Highway mpg</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].highway_mpg}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.highway_mpg}</td>
         </tr>
         <tr>
           <th>Displacement</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].displacement}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.displacement}</td>
         </tr>
         <tr>
           <th>Class</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].class}</td>
+          <td style={{textTransform:'capitalize'}}>{carData && carData.class}</td>
         </tr>
         </Table>
                 </Col>
@@ -125,6 +139,8 @@ console.log(url)
         
       </Card.Body>
     </Card>
+      </Container>
+      
     <Container className='mt-5'>
         <h2 style={{color:'#253f4b'}}>Parameters</h2>
         <Row>
