@@ -47,7 +47,7 @@ console.log(url)
   }, [url, carImageSearchQuery]);
 
   const handleViewDetails = () => {
-    navigate('/cardetails', { state: { mod: mod, index: index } });
+    navigate('/cardetails', { state: { mod: mod, index: index,carImageSearchQuery:carImageSearchQuery } });
   };
   return (
     <Card style={{ width: '18rem' }}>

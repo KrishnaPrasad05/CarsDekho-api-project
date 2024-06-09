@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Button, ListGroup, Container, Row, Col,Form } from 'react-bootstrap';
+import { Card, Button, ListGroup, Container, Row, Col,Form, Breadcrumb } from 'react-bootstrap';
 import CardLgComp from './CardLgComp';
 import Carousel from 'react-bootstrap/Carousel';
 import ExampleCarouselImage1 from '../../Assets/Images/carImage.jpg';
@@ -26,6 +26,9 @@ function CardLg() {
     maxHeight:'600px', // Maximum width of the image // Auto-adjusting height to maintain aspect ratio
     margin: '0 auto' // Center the image horizontally
   };
+  useEffect(()=>{
+    window.scrollTo(0,0);
+})
 
   const handleSearch = async () => {
     setLoading(true);
@@ -69,9 +72,13 @@ function CardLg() {
     };
   
     return (
-        <div>
+        <div style={{marginTop:'4rem'}}>
+          <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
+      <Breadcrumb.Item active><Link to="/" style={{color:'#c8dfea',textDecoration:'none'}}>Home</Link></Breadcrumb.Item>
+      
+      </Breadcrumb>
            <div>
-         <Container style={{marginTop:'5rem'}}>
+         <Container style={{marginTop:'1rem'}}>
          <Carousel style={{display:'flex',alignItems:'center',justifyContent:'center',padding:'10px'}} controls={false} indicators={false}>
       <Carousel.Item interval={1000}>
         <img src={ExampleCarouselImage1} className='img-fluid rounded' style={imageStyle} alt="First slide" />
@@ -225,7 +232,7 @@ function CardLg() {
         </Col> 
       </Row>
       <div className='mt-5' style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-     <Button style={{ backgroundColor: 'maroon', border: 'none', color: 'white' }}>Explore Cars</Button>
+     <Button as={Link} to="/byfuel" style={{ backgroundColor: 'maroon', border: 'none', color: 'white' }}>Explore Cars</Button>
      </div>
     </Container>
 
@@ -248,7 +255,7 @@ function CardLg() {
         </Col> 
       </Row>
       <div className='mt-5' style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-     <Button style={{ backgroundColor: 'maroon', border: 'none', color: 'white' }}>Explore Cars</Button>
+     <Button as={Link} to="/bytrans" style={{ backgroundColor: 'maroon', border: 'none', color: 'white' }}>Explore Cars</Button>
      </div>
     </Container>
         </div>

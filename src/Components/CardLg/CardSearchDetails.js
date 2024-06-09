@@ -1,9 +1,10 @@
-import {Container,Row,Col,Table,Image, Alert} from 'react-bootstrap';
+import {Container,Row,Col,Table,Image, Alert, Breadcrumb} from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button, ListGroup } from 'react-bootstrap';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function CardSearchDetailComp({fuel,index, trans, year, carImageSearchQuery }) {
 
@@ -18,6 +19,9 @@ function CardSearchDetailComp({fuel,index, trans, year, carImageSearchQuery }) {
   const [carData, setCarData] = useState(null);
   const [carImage, setCarImage] = useState('');
 
+  useEffect(()=>{
+    window.scrollTo(0,0);
+});
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -65,7 +69,13 @@ function CardSearchDetailComp({fuel,index, trans, year, carImageSearchQuery }) {
   }
 
   return (
-    <div>
+    <div style={{marginTop:'4rem'}}>
+      <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
+      <Breadcrumb.Item active><Link to="/" style={{color:'#c8dfea',textDecoration:'none'}}>Home</Link></Breadcrumb.Item>
+      <Breadcrumb.Item  active style={{textDecoration:'none'}}>
+        <span style={{color:'white',textDecoration:'none'}}>Car details</span>
+      </Breadcrumb.Item>
+      </Breadcrumb>
       <Container>
       <Card style={{boxShadow:'5px 5px 10px #9EBBBB',marginTop:'5rem'}}>
         <Card.Header style={{backgroundColor:'#c8dfea',padding:'5px',color:'#253f4b'}}>
