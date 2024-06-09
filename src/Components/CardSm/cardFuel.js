@@ -1,19 +1,24 @@
 import {Container,Row,Col} from 'react-bootstrap';
 import CardSmComp from './CardSmComp';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function CardFuel(){
     const url1 = 'https://api.api-ninjas.com/v1/cars?';
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    })
     return(
-        <div>
-             <Breadcrumb style={{backgroundColor:'#608da2',fontSize:'1.2rem',marginTop:'4rem'}}>
-      <Breadcrumb.Item  style={{color:'white',textDecoration:'none'}} href='/'><span  style={{color:'white',textDecoration:'none'}}>Home</span></Breadcrumb.Item>
+        <div style={{marginTop:'4rem'}}>
+             <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
+      <Breadcrumb.Item active><Link to="/" style={{color:'#c8dfea',textDecoration:'none'}}>Home</Link></Breadcrumb.Item>
       <Breadcrumb.Item  active style={{textDecoration:'none'}}>
-        <span style={{color:'gold',textDecoration:'none'}}>Cars By Fuel Type</span>
+        <span style={{color:'white',textDecoration:'none'}}>Cars By Fuel Type</span>
       </Breadcrumb.Item>
       </Breadcrumb>
             <Container>
-        <h3 className='text-center mt-3 mb-3'>Fuel Type Gas</h3>
+        <h3 className='text-center mt-3 mb-3' style={{color:'#be5504'}}>Fuel Type Gas</h3>
             <Row>
                 <Col className='m-2'>
                 <CardSmComp url1={url1}  mod="fuel_type=gas" index="0" carImageSearchQuery="Alfa Romeo"/>
@@ -30,7 +35,7 @@ function CardFuel(){
                
                
             </Row>
-        <h3 className='text-center mt-3 mb-3'>Fuel Type Diesel</h3>
+        <h3 className='text-center mt-3 mb-3' style={{color:'#be5504'}}>Fuel Type Diesel</h3>
             <Row>
                 <Col className='m-2'>
                 <CardSmComp url1={url1}  mod="fuel_type=diesel" index="0" carImageSearchQuery="Mercedes-Benz"/>
@@ -47,7 +52,7 @@ function CardFuel(){
                
                
             </Row>
-        <h3 className='text-center mt-3 mb-3'>Fuel Type Electricity</h3>
+        <h3 className='text-center mt-3 mb-3' style={{color:'#be5504'}}>Fuel Type Electricity</h3>
             <Row>
                 <Col className='m-2'>
                 <CardSmComp url1={url1}  mod="fuel_type=electricity" index="0" carImageSearchQuery="Nissan"/>

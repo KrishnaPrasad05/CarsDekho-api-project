@@ -1,14 +1,15 @@
-import {Container,Row,Col,Table,Image} from 'react-bootstrap';
+import {Container,Row,Col,Table,Image, Breadcrumb} from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button, ListGroup } from 'react-bootstrap';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
-function CardDetailComp({ url1, model, fuel, trans, year, carImageSearchQuery }) {
+function CardDetailComp({ url1, model, fuel, trans, year}) {
 
   const location = useLocation();
-  const { mod, index } = location.state || {};
+  const { mod, index,carImageSearchQuery } = location.state || {};
   const indexValue =`&index=${index}`;
   const url=url1+mod+indexValue;
   console.log(url)
@@ -28,6 +29,7 @@ console.log(url)
         console.error('Error fetching car data:', error);
       }
     };
+    
 
     const fetchCarImage = async () => {
       try {
@@ -50,8 +52,21 @@ console.log(url)
     fetchData();
     fetchCarImage();
   }, [url, carImageSearchQuery]);
+   useEffect(()=>{
+        window.scrollTo(0,0);
+    })
   return (
-    <div>
+    <div style={{marginTop:'2rem'}}>
+      <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
+      <Breadcrumb.Item active><Link to="/" style={{color:'#c8dfea',textDecoration:'none'}}>Home</Link></Breadcrumb.Item>
+      <Breadcrumb.Item  active style={{textDecoration:'none'}}>
+        <span style={{color:'white',textDecoration:'none'}}>Car details</span>
+      </Breadcrumb.Item>
+      </Breadcrumb>
+      
+    <Container >
+      
+     
    <Card className='mt-5' style={{boxShadow:'10px 10px 30px #9EBBBB'}}>
         <Card.Header style={{backgroundColor:'#c8dfea',padding:'5px',color:'#253f4b'}}>
             <h2 className='text-center'>All Details</h2>
@@ -202,13 +217,13 @@ console.log(url)
             <h4 style={{color:'maroon'}}>Class</h4>
             <list>
                 <ul style={{fontFamily:'sans-serif',fontSize:'16px',color:'#333333'}}>
-                    <li><p><b>Class</b> typically refers to different categories or segments based on factors like size, price, features, and target market. Common classes include subcompact, compact, midsize, and full-size, with distinctions in dimensions and amenities. Luxury or premium classes offer higher-end features, materials, and performance, appealing to affluent consumers. Additionally, there are specialty classes like sports cars, SUVs, trucks, and electric vehicles, each tailored to specific preferences and needs. Car manufacturers design and market vehicles within these classes to meet diverse consumer demands, providing options ranging from practical commuting to luxurious comfort and high-performance driving experiences.</p></li>
+                    <li><p><b>Class</b> typically refers to different categories or segments based on factors like size, price, features, and target market. Common classes include subcompact, compact, midsize, and full-size, with distinctions in dimensions and amenities. Luxury or premium classes offer higher-end features, materials, and performance, appealing to affluent consumers. Additionally, there are specialty classes like sports cars, SUVs, trucks, and electric vehicles, each tailored to specific preferences and needs. Car manufacturers design and market vehicles within these classes to meet Containererse consumer demands, providing options ranging from practical commuting to luxurious comfort and high-performance driving experiences.</p></li>
                 </ul>
             </list>
         </Row>
     </Container>
+    </Container>
     </div>
- 
   );
 }
 
