@@ -21,6 +21,7 @@ import {Routes ,Route} from 'react-router-dom';
 import CardDetailComp from './Components/CardDetail/CardDetailComp';
 import ContactUs from './Components/ContactUs/contactUs';
 import FaqEmp from './Components/FAQ/FAQ';
+import CardSearchDetailComp from './Components/CardLg/CardSearchDetails';
 function App() {
   return (
     <div>
@@ -31,7 +32,8 @@ function App() {
       <Route path='/byfuel' element ={<CardFuel />}/>
       <Route path='/bytrans' element ={<CardTrans/>}/>
       
-      <Route path="/cardetails/:model" element={<CardDetail />} />
+      <Route path="/cardetails" element={<CardDetail />} />
+      <Route path="/carsearchdetails" element={<CardSearchDetailComp />} />
       <Route path="/contactus" element={<ContactUs/>} />
       <Route path="/faq" element={<FaqEmp/>} />
     </Routes>

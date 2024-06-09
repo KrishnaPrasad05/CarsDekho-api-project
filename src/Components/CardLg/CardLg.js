@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +20,7 @@ function CardLg() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const imageStyle = {
     width: '1300px',
     maxHeight:'600px', // Maximum width of the image // Auto-adjusting height to maintain aspect ratio
@@ -64,6 +64,9 @@ function CardLg() {
 
     const url1 = 'https://api.api-ninjas.com/v1/cars?';
    
+    const handleview = (mod,make) => {
+      navigate('/carsearchdetails', { state: { model: mod,make:make } });
+    };
   
     return (
         <div>
@@ -114,11 +117,16 @@ function CardLg() {
 
     </Container>
     <Container >
-        <div style={{display:'flex',alignContent:'center',justifyContent:'space-between'}}>
-        <h3>To know more use our search :</h3>
-      <Form  style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-        <Row className="mb-3">
-          <Col sm={8}>
+        
+          <Row>
+            <Col sm={12} xxl={6} md={6}>
+            <h3 className='text-center'>To know more use our search :</h3>
+            </Col>
+            <Col sm={12} xxl={6} md={6}>
+            <Row className="mb-3" sm={12} >
+            <Form  style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+       
+          <Col sm={6} md={6} >
             <Form.Control
               type="text"
               placeholder="Search for cars..."
@@ -126,19 +134,25 @@ function CardLg() {
               onChange={(e) => setSearchQuery(e.target.value)} style={{border:'1px solid black'}}
             />
           </Col>
-          <Col sm={4}>
-            <Button variant="primary" onClick={handleSearch} style={{backgroundColor:'#537d90',border:'none',color:'white'}}>Search</Button>
+          <Col sm={6} md={6}>
+            <Button variant="primary" onClick={handleSearch} style={{backgroundColor:'#537d90',border:'none',color:'white',marginLeft:'5px'}}>Search</Button>
           </Col>
+          </Form>
         </Row>
-      </Form>
-        </div>
+      
+            </Col>
+           
+          </Row>
+       
+     
+       
     
       {loading ? (
         <p>Loading...</p>
       ) : (
         <Row className="mt-3">
           {searchResults.map((car, index) => (
-            <Col key={index} sm={6} md={4} lg={3} className="mb-3">
+            <Col key={index} sm={12} md={6} lg={4} xxl={3} className="mb-3" style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
              {/*  <Card>
                 <Card.Body>
                   <Card.Title>{car.make}</Card.Title>
@@ -160,7 +174,7 @@ function CardLg() {
         Model: {car.model}
         </Card.Text>
         <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-        <Button as={Link} to="/cardetails" style={{backgroundColor:'#537d90',border:'none',color:'white'}}>View Details</Button>
+        <Button style={{backgroundColor:'#537d90',border:'none',color:'white'}} onClick={()=>handleview(car.model,car.make)}>View Details</Button>
         </div>
         
       </Card.Body>
@@ -171,21 +185,20 @@ function CardLg() {
       )}
     </Container>
     </div>
-<Container className='mt-5 mb-5'>
-        <h1 className='mt-5 mb-5 text-center' style={{backgroundColor:'#537d90',color:'white',borderRadius:'10px',padding:'5px'}}>Cars by Year</h1>
-        <Row>
-          <Col className='m-2'>
-          
+<Container className='mt-5 mb-5' >
+        <h1 className='mt-5 mb-5 text-center w-100' style={{backgroundColor:'#537d90',color:'white',borderRadius:'10px',padding:'5px'}}>Cars by Year</h1>
+        <Row >
+          <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
             <CardLgComp url1={url1}  mod="year=1998" index="0" carImageSearchQuery="acura nsx"/>
           </Col>
-           <Col className='m-2'>
+           <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
             <CardLgComp  url1={url1} mod="year=1998"  index="1" carImageSearchQuery="acura"/>
           </Col>
           
-          <Col className='m-2'>
+          <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
             <CardLgComp url1={url1} mod="year=1998"  index="2" carImageSearchQuery="aston martin coupe"/>
           </Col>
-          <Col className='m-2'>
+          <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
             <CardLgComp url1={url1} mod="year=1998"  index="4" carImageSearchQuery="aston martin" />
           </Col> 
         </Row>
@@ -196,18 +209,18 @@ function CardLg() {
       <Container className='mt-5 mb-5'>
       <h1 className='mt-5 mb-5 text-center' style={{backgroundColor:'#537d90',color:'white',borderRadius:'10px',padding:'5px'}}>Cars by Fuel Type</h1>
       <Row>
-        <Col className='m-2'>
+        <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
         
           <CardLgComp url1={url1}  mod="fuel_type=gas" index="0" carImageSearchQuery="alfa romeo spider veloce 2000"/>
         </Col>
-         <Col className='m-2'>
+         <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
           <CardLgComp  url1={url1} mod="fuel_type=gas"  index="1" carImageSearchQuery="ferrari testarossa"/>
         </Col>
         
-        <Col className='m-2'>
+        <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
           <CardLgComp url1={url1} mod="fuel_type=diesel"  index="2" carImageSearchQuery="Gmc G15/25 Rally"/>
         </Col>
-        <Col className='m-2'>
+        <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
           <CardLgComp url1={url1} mod="fuel_type=diesel"  index="4" carImageSearchQuery="Chevrolet Pickup 2500 " />
         </Col> 
       </Row>
@@ -219,18 +232,18 @@ function CardLg() {
     <Container className='mt-5 mb-5'>
     <h1 className='mt-5 mb-5 text-center' style={{backgroundColor:'#537d90',color:'white',borderRadius:'10px',padding:'5px'}}>Cars by Transimission</h1>
       <Row>
-        <Col className='m-2'>
+        <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
         
           <CardLgComp url1={url1}  mod="transmission=a" index="0" carImageSearchQuery="Dodge"/>
         </Col>
-         <Col className='m-2'>
+         <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
           <CardLgComp  url1={url1} mod="transmission=a"  index="4" carImageSearchQuery="Volkswagen Golf"/>
         </Col>
         
-        <Col className='m-2'>
+        <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
           <CardLgComp url1={url1} mod="transmission=m"  index="2" carImageSearchQuery="Dodge Charger"/>
         </Col>
-        <Col className='m-2'>
+        <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
           <CardLgComp url1={url1} mod="transmission=m"  index="3" carImageSearchQuery="Subaru" />
         </Col> 
       </Row>

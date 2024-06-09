@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import CardDetailComp from './CardDetailComp';
 function CardDetail(){
     const { model } = useParams();
-    const url1 = 'https://api.api-ninjas.com/v1/cars?model=';
+    const url1 = 'https://api.api-ninjas.com/v1/cars?';
     return(
         <div>
-            <Breadcrumb style={{backgroundColor:'#608da2'}}>
+            <Breadcrumb style={{backgroundColor:'#608da2',fontSize:'14px'}}>
       <Breadcrumb.Item  style={{color:'white',textDecoration:'none'}} href='/'><span  style={{color:'white',textDecoration:'none'}}>Home</span></Breadcrumb.Item>
       <Breadcrumb.Item  active style={{textDecoration:'none'}}>
         <span style={{color:'orange',textDecoration:'none'}}>Cars Details</span>

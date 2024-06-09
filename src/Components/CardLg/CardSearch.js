@@ -12,13 +12,19 @@ import ExampleCarouselImage7 from '../../Assets/Images/carImage6.jpg';
 import ExampleCarouselImage8 from '../../Assets/Images/carImage7.jpg';
 import ExampleCarouselImage9 from '../../Assets/Images/carImage8.jpg';
 import ExampleCarouselImage10 from '../../Assets/Images/carImage9.webp';
+import CardSmComp from '../CardSm/CardSmComp';
+import CardSearchDetailComp from './CardSearchDetails';
+import CardSearchComp from './CardSearchComp';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 function NinjaCarSearch() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
+  const url1 = 'https://api.api-ninjas.com/v1/cars?';
   const imageStyle = {
     width: '1300px',
     maxHeight:'600px', // Maximum width of the image // Auto-adjusting height to maintain aspect ratio
@@ -58,6 +64,10 @@ function NinjaCarSearch() {
       console.error('Error fetching car image:', error);
     }
     return ''; // Return empty string if no image found
+  };
+
+  const handleview = (mod) => {
+    navigate('/carsearchdetails', { state: { model: mod } });
   };
 
   return (
@@ -130,22 +140,15 @@ function NinjaCarSearch() {
       {loading ? (
         <p>Loading...</p>
       ) : (
+      /*  <Row className="mt-3">
+          {searchResults.map((car, index) => (
+            <CardSearchComp url1={url1}  mod={car[index].model} make={car[index].make} index="0" carImageSearchQuery={car[index].make}/>
+          ))}
+        </Row>  */
         <Row className="mt-3">
           {searchResults.map((car, index) => (
             <Col key={index} sm={6} md={4} lg={3} className="mb-3">
-             {/*  <Card>
-                <Card.Body>
-                  <Card.Title>{car.make}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">Model: {car.model}</Card.Subtitle>
-                  <Card.Text>
-                    Year: {car.year}<br />
-                    Fuel Type: {car.fuel_type}<br />
-                    Transmission: {car.transmission}
-                  </Card.Text>
-                  {car.image && <img src={car.image} alt="Car" style={{width:'300px',height:'150px'}} className="img-fluid mb-2" />}
-                  <Button variant="primary">See Details</Button>
-                </Card.Body>
-              </Card> */}
+            
               <Card style={{ width: '18rem' }}>
               {car.image && <img src={car.image} alt="Car" style={{width:'300px',height:'150px',padding:'10px'}} className="img-fluid mb-2" />}
       <Card.Body>
@@ -154,14 +157,15 @@ function NinjaCarSearch() {
         Model: {car.model}
         </Card.Text>
         <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-        <Button style={{backgroundColor:'#537d90',border:'none',color:'white'}}>View Details</Button>
+        <Button as={Link} to="/carsearchdetails" style={{backgroundColor:'#537d90',border:'none',color:'white'}}>View Details</Button>
         </div>
         
       </Card.Body>
     </Card>
             </Col>
           ))}
-        </Row>
+        </Row> 
+        
       )}
     </Container>
     </div>

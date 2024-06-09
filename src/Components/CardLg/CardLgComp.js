@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button, ListGroup,Table } from 'react-bootstrap';
 
@@ -8,6 +8,7 @@ function CardLgComp({ url1, model, fuel, trans, year, index, carImageSearchQuery
   const url=url1+mod;
   const [carData, setCarData] = useState(null);
   const [carImage, setCarImage] = useState('');
+  const navigate = useNavigate();
 console.log(url)
   useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +45,9 @@ console.log(url)
     fetchData();
     fetchCarImage();
   }, [url, carImageSearchQuery]);
+  const handleViewDetails = () => {
+    navigate('/cardetails', { state: { mod: mod, index: index } });
+  };
 
   return (
     <div>
@@ -80,7 +84,12 @@ console.log(url)
           </Table>
          
       <Card.Body style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Button as={Link} to={`/cardetails/${carData && carData[index].model}`} style={{ backgroundColor: '#537d90', border: 'none', color: 'white' }}>See Full Details</Button>
+      <Button 
+      onClick={handleViewDetails} 
+      style={{ backgroundColor: '#537d90', border: 'none', color: 'white' }}
+    >
+      View Details
+    </Button>
 
       </Card.Body>
      
