@@ -20,16 +20,16 @@ function CardFuel(){
             <Container>
         <h3 className='text-center mt-3 mb-3' style={{color:'#be5504'}}>Fuel Type Gas</h3>
             <Row>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=gas" index="0" carImageSearchQuery="Alfa Romeo"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=gas" index="1" carImageSearchQuery="Ferrari Testarossa"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=gas" index="2" carImageSearchQuery="Dodge Charger"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=gas" index="3" carImageSearchQuery="Dodge"/>
                 </Col>
                
@@ -37,16 +37,16 @@ function CardFuel(){
             </Row>
         <h3 className='text-center mt-3 mb-3' style={{color:'#be5504'}}>Fuel Type Diesel</h3>
             <Row>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=diesel" index="0" carImageSearchQuery="Mercedes-Benz"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=diesel" index="1" carImageSearchQuery="Gmc"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=diesel" index="4" carImageSearchQuery="Chevrolet"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=diesel" index="3" carImageSearchQuery="Chevrolet automatic"/>
                 </Col>
                
@@ -54,16 +54,16 @@ function CardFuel(){
             </Row>
         <h3 className='text-center mt-3 mb-3' style={{color:'#be5504'}}>Fuel Type Electricity</h3>
             <Row>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=electricity" index="0" carImageSearchQuery="Nissan"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=electricity" index="1" carImageSearchQuery="Toyota"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=electricity" index="4" carImageSearchQuery="Ford Bronco"/>
                 </Col>
-                <Col className='m-2'>
+                <Col className='m-2' style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <CardSmComp url1={url1}  mod="fuel_type=electricity" index="3" carImageSearchQuery="Ford Th!Nk"/>
                 </Col>
                

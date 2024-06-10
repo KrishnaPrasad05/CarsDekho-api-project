@@ -6,10 +6,11 @@ import { Card, Button, ListGroup } from 'react-bootstrap';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
-function CardDetailComp({ url1, model, fuel, trans, year}) {
+function CardDetailComp({ model, fuel, trans, year}) {
 
   const location = useLocation();
   const { mod, index,carImageSearchQuery } = location.state || {};
+  const url1 = 'https://api.api-ninjas.com/v1/cars?';
   const indexValue =`&index=${index}`;
   const url=url1+mod+indexValue;
   console.log(url)
@@ -56,18 +57,20 @@ console.log(url)
         window.scrollTo(0,0);
     })
   return (
-    <div style={{marginTop:'2rem'}}>
-      <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
+    <div style={{marginTop:'4rem'}}>
+        <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
       <Breadcrumb.Item active><Link to="/" style={{color:'#c8dfea',textDecoration:'none'}}>Home</Link></Breadcrumb.Item>
       <Breadcrumb.Item  active style={{textDecoration:'none'}}>
-        <span style={{color:'white',textDecoration:'none'}}>Car details</span>
+        <span style={{color:'white',textDecoration:'none'}}>Car Details</span>
       </Breadcrumb.Item>
-      </Breadcrumb>
       
-    <Container >
+    </Breadcrumb>
+      
+    
+    <Container>
       
      
-   <Card className='mt-5' style={{boxShadow:'10px 10px 30px #9EBBBB'}}>
+   <Card className='mt-5' style={{boxShadow:'5px 5px 10px #9EBBBB'}}>
         <Card.Header style={{backgroundColor:'#c8dfea',padding:'5px',color:'#253f4b'}}>
             <h2 className='text-center'>All Details</h2>
         </Card.Header>
@@ -77,61 +80,61 @@ console.log(url)
             <Image src={carImage} rounded style={{width:'600px',height:'300px',padding:'20px',border:'1px solid black',borderRadius:'15px'}} className='img-fluid'/>
             </Row>
             <Row className='mt-3'>
-                <Col>
-                <Table >
-        <tr>
-          <th>Make</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].make}</td>
-        </tr>
-        <tr>
-          <th>Model</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].model}</td>
-        </tr>
-        <tr>
-          <th>Year</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].year}</td>
-        </tr>
-        <tr>
-          <th>Drive</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].drive}</td>
-        </tr>
-        <tr>
-          <th>Fuel Type</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].fuel_type}</td>
-        </tr>
-        <tr>
-          <th>Transmission Type</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].transmission}</td>
-        </tr>
-        </Table>
+                <Col sm={12} md={6} lg={6} xl={6} xxl={6} >
+                
+        <Row >
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Make</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].make}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Model</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].model}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Year</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].year}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Drive</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].drive}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Fuel Type</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].fuel_type}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Transmission Type</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].transmission}</Col>
+        </Row>
+        
                 </Col>
-                <Col>
-                <Table >
-        <tr>
-          <th>City mpg</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].city_mpg}</td>
-        </tr>
-        <tr>
-          <th>Combined mpg</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].combination_mpg}</td>
-        </tr>
-        <tr>
-          <th>Cylinders</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].cylinders}</td>
-        </tr>
-        <tr>
-          <th>Highway mpg</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].highway_mpg}</td>
-        </tr>
-        <tr>
-          <th>Displacement</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].displacement}</td>
-        </tr>
-        <tr>
-          <th>Class</th>
-          <td style={{textTransform:'capitalize'}}>{carData && carData[index].class}</td>
-        </tr>
-        </Table>
+                <Col sm={12} md={6} lg={6} xl={6} xxl={6}>
+                
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>City mpg</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].city_mpg}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Combined mpg</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].combination_mpg}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Cylinders</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].cylinders}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Highway mpg</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].highway_mpg}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Displacement</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].displacement}</Col>
+        </Row>
+        <Row>
+          <Col style={{fontWeight:'bold',color:'maroon'}}>Class</Col>
+          <Col style={{textTransform:'capitalize',color:'grey'}}>{carData && carData[index].class}</Col>
+        </Row>
+        
                 </Col>
             </Row>
         </Container>
