@@ -77,7 +77,7 @@ function CardSearchDetailComp({fuel,index, trans, year, carImageSearchQuery }) {
       </Breadcrumb.Item>
       </Breadcrumb>
       <Container>
-      <Card style={{boxShadow:'5px 5px 10px #9EBBBB',marginTop:'5rem'}}>
+      <Card style={{boxShadow:'5px 5px 11px #9EBBBB',marginTop:'5rem'}}>
         <Card.Header style={{backgroundColor:'#c8dfea',padding:'5px',color:'#253f4b'}}>
             <h2 className='text-center'>All Details</h2>
         </Card.Header>
