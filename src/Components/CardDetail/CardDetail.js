@@ -14,9 +14,9 @@ function CardDetail(){
       </Breadcrumb>
  <Container>
             <Row>
-                <Col>
+                
                 <CardDetailComp url1={url1}  mod={model} index="4" carImageSearchQuery="bmw"/>
-                </Col>
+                
             </Row>
         </Container>
         </div>

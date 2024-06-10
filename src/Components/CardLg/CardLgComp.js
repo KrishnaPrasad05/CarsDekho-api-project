@@ -46,7 +46,7 @@ console.log(url)
     fetchCarImage();
   }, [url, carImageSearchQuery]);
   const handleViewDetails = () => {
-    navigate('/cardetails', { state: { mod: mod, index: index } });
+    navigate('/cardetails', { state: { mod: mod, index: index,carImageSearchQuery:carImageSearchQuery } });
   };
 
   return (
