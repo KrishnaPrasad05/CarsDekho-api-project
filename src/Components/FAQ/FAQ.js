@@ -2,8 +2,12 @@ import { Breadcrumb, Container, Image } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
 import '../Accordian.css';
+import { useEffect } from 'react';
 
 function FaqEmp() {
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  })
   return (
     <div style={{marginTop:'4rem'}}>
 <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
