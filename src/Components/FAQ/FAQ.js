@@ -3,17 +3,20 @@ import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
 import '../Accordian.css';
 import { useEffect } from 'react';
+import TopButton from '../TopButton';
 
 function FaqEmp() {
   useEffect(()=>{
     window.scrollTo(0,0);
   })
   return (
+   
     <div style={{marginTop:'4rem'}}>
+     
 <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
       <Breadcrumb.Item active><Link to="/" style={{color:'#c8dfea',textDecoration:'none'}}>Home</Link></Breadcrumb.Item>
       <Breadcrumb.Item  active style={{textDecoration:'none'}}>
-        <span style={{color:'white',textDecoration:'none'}}>Contact Us</span>
+        <span style={{color:'white',textDecoration:'none'}}>FAQ</span>
       </Breadcrumb.Item>
       </Breadcrumb>
       <Container style={{marginBottom:'6.5rem'}}>
