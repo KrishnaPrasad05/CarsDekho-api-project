@@ -1,5 +1,5 @@
 import { Form, Button, Modal, Breadcrumb } from 'react-bootstrap';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -64,6 +64,9 @@ function ContactUs() {
           setFormErrors(errors);
         }
       };
+      useEffect(()=>{
+        window.scrollTo(0,0);
+      })
   return (
     <section style={{marginBottom:'3rem',marginTop:'4rem'}}>
       <Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
@@ -72,7 +75,8 @@ function ContactUs() {
         <span style={{color:'white',textDecoration:'none'}}>Contact Us</span>
       </Breadcrumb.Item>
       </Breadcrumb>
- <Container className='mt-5 mb-5' style={{backgroundColor:'#c8dfea',borderRadius:'10px'}}>
+      <div style={{padding:'10px'}}>
+      <Container className='mt-5 mb-5' style={{backgroundColor:'#c8dfea',borderRadius:'10px'}}>
         <Row className='pt-5 pb-5' xs={1} md={2}>
         <Col >
         <h3 style={{color: '#253f4b'}}>Feel free to connect with us,</h3>
@@ -125,6 +129,8 @@ function ContactUs() {
         </Col>
         </Row>
     </Container>
+      </div>
+ 
 
 
 

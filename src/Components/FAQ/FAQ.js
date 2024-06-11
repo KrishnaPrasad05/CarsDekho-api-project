@@ -1,44 +1,53 @@
-import { Container, Image } from 'react-bootstrap';
+import { Breadcrumb, Container, Image } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
-
+import { Link } from 'react-router-dom';
+import '../Accordian.css';
 
 function FaqEmp() {
   return (
-    <Container style={{marginBottom:'8.5rem'}}>
-      <h1 style={{color:'#2B358C',marginTop:'2rem',textAlign:'center'}}>FAQ </h1>
+    <div style={{marginTop:'4rem'}}>
+<Breadcrumb style={{backgroundColor:'#608da0',fontSize:'16px'}}>
+      <Breadcrumb.Item active><Link to="/" style={{color:'#c8dfea',textDecoration:'none'}}>Home</Link></Breadcrumb.Item>
+      <Breadcrumb.Item  active style={{textDecoration:'none'}}>
+        <span style={{color:'white',textDecoration:'none'}}>Contact Us</span>
+      </Breadcrumb.Item>
+      </Breadcrumb>
+      <Container style={{marginBottom:'6.5rem'}}>
+      
+      <h1 style={{color:'#253f4b',marginTop:'2rem',textAlign:'center'}}>FAQ </h1>
 <Accordion defaultActiveKey="0">
-      <Accordion.Item eventKey="0">
-        <Accordion.Header flush style={{backgroundColor:'#E6E7FF'}}>Question 1: How do I search car?</Accordion.Header>
+      <Accordion.Item eventKey="0" style={{backgroundColor:'white'}}>
+        <Accordion.Header >1. What information can I find about cars on this website?</Accordion.Header>
         <Accordion.Body >
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>You can find detailed information about various cars, including their make, model, year, engine specifications, fuel type, mileage, and features. This information is designed to help you make informed decisions about different car models.</p>
         
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="1">
-        <Accordion.Header> Question 2: How can I search for categories?</Accordion.Header>
+      <Accordion.Item eventKey="1" style={{backgroundColor:'white'}}>
+        <Accordion.Header>2. Is the car information on this website up-to-date?</Accordion.Header>
         <Accordion.Body>
-          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p> Yes, the car information on our website is fetched from a reliable API that is regularly updated. This ensures that you have access to the latest details about each car.</p>
         
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="2">
-        <Accordion.Header> Question 3: Can I repost a search?</Accordion.Header>
+      <Accordion.Item eventKey="2" style={{backgroundColor:'white'}}>
+        <Accordion.Header>3. Do I need to pay to access the car details on this website?</Accordion.Header>
         <Accordion.Body>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>No, accessing car details on our website is completely free. You can browse and search for car information without any charges.</p>
         
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="3">
-        <Accordion.Header> Question 4: How do I manage sorting?</Accordion.Header>
+      <Accordion.Item eventKey="3" style={{backgroundColor:'white'}}>
+        <Accordion.Header>4. What should I do if I can't find information about a specific car?</Accordion.Header>
         <Accordion.Body>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p> If you can't find details about a specific car, please try checking the spelling or search parameters. If the problem persists, it might be due to limitations in the API data we use. You can contact us through the feedback form for further assistance.</p>
         
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="4">
-        <Accordion.Header>Question 5: How do I edit my data?</Accordion.Header>
+      <Accordion.Item eventKey="4" >
+        <Accordion.Header>5. Can I see car details on my mobile device?</Accordion.Header>
         <Accordion.Body>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Yes, our website is fully responsive and optimized for mobile devices. You can easily access and view car details on your smartphone or tablet, providing a seamless browsing experience no matter where you are.</p>
        
         </Accordion.Body>
       </Accordion.Item>
@@ -46,6 +55,8 @@ function FaqEmp() {
      
     </Accordion>
     </Container>
+    </div>
+   
     
   );
 }
